@@ -1,0 +1,34 @@
+managed; // implementation in class zbp_header_view_so unique;
+
+define behavior for ZHEADER_VIEW_SO //alias <alias_name>
+persistent table ZST_VBAK
+lock master
+//authorization master ( instance )
+//etag master <field_name>
+{
+  create;
+  update;
+  delete;
+  association _SOItem { create; }
+  association _SOStatus { create; }
+}
+
+define behavior for ZITEM_VIEW_SO //alias <alias_name>
+persistent table ZST_VBAP
+lock dependent by _SOHeader
+//authorization dependent by <association>
+//etag master <field_name>
+{
+  update;
+  delete;
+}
+
+define behavior for ZSTATUS_VIEW //alias <alias_name>
+persistent table ZVBAK_STATUS
+lock dependent by _SOHeader
+//authorization dependent by <association>
+//etag master <field_name>
+{
+  update;
+  delete;
+}

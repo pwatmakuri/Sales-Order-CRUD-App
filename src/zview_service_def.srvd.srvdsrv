@@ -1,0 +1,6 @@
+@EndUserText.label: 'Service Definition'
+define service ZVIEW_SERVICE_DEF {
+  expose ZHEADER_VIEW_SO;
+  expose ZITEM_VIEW_SO;
+  expose ZSTATUS_VIEW;
+}
